@@ -7,8 +7,9 @@ xftalpha 0.8
 text_buffer_size 2048
 update_interval 1
 total_run_times 0
+background no
 own_window yes
-own_window_transparent no
+own_window_transparent yes
 own_window_type dock
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 double_buffer yes
@@ -35,14 +36,16 @@ net_avg_samples 1
 temperature_unit celsius
 override_utf8_locale yes
 use_spacer none
-own_window_argb_visual yes
+own_window_argb_visual no
 own_window_argb_value 204
 
 TEXT
-${font Droid Sans Bold:pixelsize=24}${color C9BFC2}${alignc}${time %A} ${time %H:%M}
-${alignc}${time %d} ${time  %B} ${time %Y}
-${voffset 20}${image logo.png -p 45,60 -s  180x180}${font Droid Sans Bold:pixelsize=32} 
-${color C9BFC2}${voffset 150}  Dirty Unicorns ${voffset -10}
+${image bg-mint.png -p -0,-0 -s 280x1030}
+
+${voffset -5}${font Droid Sans Bold:pixelsize=20}${color C9BFC2}${alignr}${time %A} ${time %H:%M}   
+${alignr}${time %d} ${time  %B} ${time %Y}   
+${voffset 20}${image logo.png -p 45,80 -s  180x180}${font Droid Sans Bold:pixelsize=32} 
+${color C9BFC2}${voffset 150}  Dirty Unicorns ${voffset -40}
 
 ${font Droid Sans Mono:pixelsize=13}
 ${color grey}System${hr 2}
@@ -67,7 +70,7 @@ ${color grey}Temperature ${hr 2}
 ${color}${font Droid Sans Mono:pixelsize=12}CPU: ${execi 10 sensors | grep 'Core 0' | awk {'print $3'}}  ${execi 10 sensors | grep 'Core 1' | awk {'print $3'}}  ${execi 10 sensors | grep 'Core 2' | awk {'print $3'}}  ${execi 10 sensors | grep 'Core 3' | awk {'print $3'}}
 
 ${color grey}File Systems ${hr 2}
-${color}Root      ${fs_used /}/${fs_size /}${alignr}${color f2312e}${fs_bar 10,60 /}
+${color}Root    ${fs_used /}/${fs_size /}${alignr}${color f2312e}${fs_bar 10,60 /}
 ${color}Home   ${fs_used /home}/${fs_size /home}${alignr}${color f2312e}${fs_bar 10,60 /home}
 
 ${color grey}Processes ${hr 2}
@@ -84,7 +87,8 @@ ${color}${top_mem name 4}${alignr}${top_mem mem_res 4}
 
 ${color grey}Network/IP ${hr 2}
 ${color}${font Droid Sans Mono:pixelsize=12}Gateway address: ${alignr}${gw_ip}
-${color}Receiving ${downspeedf wlan0} KB/s ${alignr}${color 2e79f2}${downspeedgraph wlan0 10,60}
+${color}Receiving ${downspeed wlan0}/s ${alignr}${color 2e79f2}${downspeedgraph wlan0 10,60}
 ${color}Total Received${alignr}${totaldown wlan0}
-${color}Sending   ${upspeedf wlan0} KB/s ${alignr}${color 2e79f2}${upspeedgraph wlan0 10,60}
+${color}Sending   ${upspeed wlan0}/s ${alignr}${color 2e79f2}${upspeedgraph wlan0 10,60}
 ${color}Total Sent${alignr}${totalup wlan0}
+
