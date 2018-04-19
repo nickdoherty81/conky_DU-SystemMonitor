@@ -1,3 +1,4 @@
+###DU-SystemMonitor###by NickDoh81 #nick@dirtyunicorns.com#
 ##Conky Debian Stretch##by ilnanny# http://ilnanny.deviantart.com/ #
 
 use_xft yes
@@ -21,14 +22,10 @@ stippled_borders 0
 border_margin 1
 border_width 0
 default_color 910202
-#default_shade_color black
-#default_outline_color black
 own_window_colour 000000
 
-#alignment top_left
 alignment top_left
-#alignment bottom_left
-#alignment bottom_right
+
 gap_x 10
 gap_y 10
 no_buffers yes
@@ -42,17 +39,17 @@ own_window_argb_visual yes
 own_window_argb_value 204
 
 TEXT
-${font Droid Sans Bold:pixelsize=24}${color C9BFC2}${alignc}${time %A} ${time %I:%M}
+${font Droid Sans Bold:pixelsize=24}${color C9BFC2}${alignc}${time %A} ${time %H:%M}
 ${alignc}${time %d} ${time  %B} ${time %Y}
 ${voffset 20}${image logo.png -p 45,60 -s  180x180}${font Droid Sans Bold:pixelsize=32} 
 ${color C9BFC2}${voffset 150}  Dirty Unicorns ${voffset -10}
 
 ${font Droid Sans Mono:pixelsize=13}
 ${color grey}System${hr 2}
-${color}${nodename}${alignr}Mint 18.3
-${color}${sysname} ${machine} 
-${color}Kernel ${kernel}
-${color}Uptime: $uptime
+${color}${nodename}:${alignr}Mint 18.3
+${color}${sysname}:${alignr}${machine}
+${color}Kernel:${alignr}${kernel}
+${color}Uptime:${alignr}$uptime
 
 ${color grey}Resources ${hr 2}
 ${color}${freq_g (1)}GHz CPU1 ${cpu cpu1}%${alignr}${color 0ed135}${cpubar cpu1 10,60}
@@ -65,10 +62,10 @@ ${color}${freq_g (7)}GHz CPU7 ${cpu cpu7}%${alignr}${color 0ed135}${cpubar cpu7 
 ${color}${freq_g (8)}GHz CPU8 ${cpu cpu8}%${alignr}${color 0ed135}${cpubar cpu8 10,60}
 ${color}Mem  ${mem}/${memmax}${alignr}${color f2e12e}${membar 10,60}
 #${color}Swap ${swap}/${swapmax}${alignr}${color 2e79f2}${swapbar 10,60}#
-${color}Receiving ${downspeedf wlan1} KB/s ${alignr}${color 2e79f2}${downspeedgraph wlan1 10,60}
-${color}Total Received${alignr}${totaldown wlan1}
-${color}Sending   ${upspeedf wlan1} KB/s ${alignr}${color 2e79f2}${upspeedgraph wlan1 10,60}
-${color}Total Sent${alignr}${totalup wlan1}
+${color}Receiving ${downspeedf wlan0} KB/s ${alignr}${color 2e79f2}${downspeedgraph wlan0 10,60}
+${color}Total Received${alignr}${totaldown wlan0}
+${color}Sending   ${upspeedf wlan0} KB/s ${alignr}${color 2e79f2}${upspeedgraph wlan0 10,60}
+${color}Total Sent${alignr}${totalup wlan0}
 
 ${color grey}File Systems ${hr 2}
 ${color}Root      ${fs_used /}/${fs_size /}${alignr}${color f2312e}${fs_bar 10,60 /}
@@ -76,10 +73,10 @@ ${color}Home   ${fs_used /home}/${fs_size /home}${alignr}${color f2312e}${fs_bar
 #${color}Dati      ${fs_used /media/user/partition}/${fs_size /media/user/partition}${alignr}${color f2312e}${fs_bar 10,60 /media/user/partition} #canche"user"" your name and "partition"your disk our partition #
 
 ${color grey}Processes ${hr 2}
-${color}${top name 1}${alignr}${top cpu 1}
-${color}${top name 2}${alignr}${top cpu 2}
-${color}${top name 3}${alignr}${top cpu 3}
-${color}${top name 4}${alignr}${top cpu 4}
+${color}${top name 1}${alignr}${top cpu 1}%
+${color}${top name 2}${alignr}${top cpu 2}%
+${color}${top name 3}${alignr}${top cpu 3}%
+${color}${top name 4}${alignr}${top cpu 4}%
 
 ${color grey}Applications ${hr 2}
 ${color}${top_mem name 1}${alignr}${top_mem mem_res 1}
