@@ -50,27 +50,25 @@ ${color}${nodename}:${alignr}Mint 18.3
 ${color}${sysname}:${alignr}${machine}
 ${color}Kernel:${alignr}${kernel}
 ${color}Uptime:${alignr}$uptime
+${execi 1000 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq}
 
 ${color grey}Resources ${hr 2}
-${color}${freq_g (1)}GHz CPU1 ${cpu cpu1}%${alignr}${color 0ed135}${cpubar cpu1 10,60}
-${color}${freq_g (2)}GHz CPU2 ${cpu cpu2}%${alignr}${color 0ed135}${cpubar cpu2 10,60}
-${color}${freq_g (3)}GHz CPU3 ${cpu cpu3}%${alignr}${color 0ed135}${cpubar cpu3 10,60}
-${color}${freq_g (4)}GHz CPU4 ${cpu cpu4}%${alignr}${color 0ed135}${cpubar cpu4 10,60}
-${color}${freq_g (5)}GHz CPU5 ${cpu cpu5}%${alignr}${color 0ed135}${cpubar cpu5 10,60}
-${color}${freq_g (6)}GHz CPU6 ${cpu cpu6}%${alignr}${color 0ed135}${cpubar cpu6 10,60}
-${color}${freq_g (7)}GHz CPU7 ${cpu cpu7}%${alignr}${color 0ed135}${cpubar cpu7 10,60}
-${color}${freq_g (8)}GHz CPU8 ${cpu cpu8}%${alignr}${color 0ed135}${cpubar cpu8 10,60}
+${color}Core 1: ${cpu cpu1}%  ${freq_g 2}Ghz${alignr}${color 0ed135}${cpubar cpu1 10,60}
+${color}Core 2: ${cpu cpu2}%  ${freq_g 2}Ghz${alignr}${color 0ed135}${cpubar cpu2 10,60}
+${color}Core 3: ${cpu cpu3}%  ${freq_g 2}Ghz${alignr}${color 0ed135}${cpubar cpu3 10,60}
+${color}Core 4: ${cpu cpu4}%  ${freq_g 2}Ghz${alignr}${color 0ed135}${cpubar cpu4 10,60}
+${color}Core 5: ${cpu cpu5}%  ${freq_g 2}Ghz${alignr}${color 0ed135}${cpubar cpu5 10,60}
+${color}Core 6: ${cpu cpu6}%  ${freq_g 2}Ghz${alignr}${color 0ed135}${cpubar cpu6 10,60}
+${color}Core 7: ${cpu cpu7}%  ${freq_g 2}Ghz${alignr}${color 0ed135}${cpubar cpu7 10,60}
+${color}Core 8: ${cpu cpu8}%  ${freq_g 2}Ghz${alignr}${color 0ed135}${cpubar cpu8 10,60}
 ${color}Mem  ${mem}/${memmax}${alignr}${color f2e12e}${membar 10,60}
-#${color}Swap ${swap}/${swapmax}${alignr}${color 2e79f2}${swapbar 10,60}#
-${color}Receiving ${downspeedf wlan0} KB/s ${alignr}${color 2e79f2}${downspeedgraph wlan0 10,60}
-${color}Total Received${alignr}${totaldown wlan0}
-${color}Sending   ${upspeedf wlan0} KB/s ${alignr}${color 2e79f2}${upspeedgraph wlan0 10,60}
-${color}Total Sent${alignr}${totalup wlan0}
+
+${color grey}Temperature ${hr 2}
+${color}${font Droid Sans Mono:pixelsize=12}CPU: ${execi 10 sensors | grep 'Core 0' | awk {'print $3'}}  ${execi 10 sensors | grep 'Core 1' | awk {'print $3'}}  ${execi 10 sensors | grep 'Core 2' | awk {'print $3'}}  ${execi 10 sensors | grep 'Core 3' | awk {'print $3'}}
 
 ${color grey}File Systems ${hr 2}
 ${color}Root      ${fs_used /}/${fs_size /}${alignr}${color f2312e}${fs_bar 10,60 /}
-${color}Home   ${fs_used /home}/${fs_size /home}${alignr}${color f2312e}${fs_bar 10,60 /}
-#${color}Dati      ${fs_used /media/user/partition}/${fs_size /media/user/partition}${alignr}${color f2312e}${fs_bar 10,60 /media/user/partition} #canche"user"" your name and "partition"your disk our partition #
+${color}Home   ${fs_used /home}/${fs_size /home}${alignr}${color f2312e}${fs_bar 10,60 /home}
 
 ${color grey}Processes ${hr 2}
 ${color}${top name 1}${alignr}${top cpu 1}%
@@ -84,10 +82,9 @@ ${color}${top_mem name 2}${alignr}${top_mem mem_res 2}
 ${color}${top_mem name 3}${alignr}${top_mem mem_res 3}
 ${color}${top_mem name 4}${alignr}${top_mem mem_res 4}
 
-${color grey}Temperature ${hr 2}
-${color}CPU : ${alignr}${hwmon 2 temp 1}°C
-${color}CPU : ${alignr}${hwmon 3 temp 1}°C
-${color}GPU : ${alignr}${hwmon 1 temp 1}°C
-
-
-
+${color grey}Network/IP ${hr 2}
+${color}${font Droid Sans Mono:pixelsize=12}Gateway address: ${alignr}${gw_ip}
+${color}Receiving ${downspeedf wlan0} KB/s ${alignr}${color 2e79f2}${downspeedgraph wlan0 10,60}
+${color}Total Received${alignr}${totaldown wlan0}
+${color}Sending   ${upspeedf wlan0} KB/s ${alignr}${color 2e79f2}${upspeedgraph wlan0 10,60}
+${color}Total Sent${alignr}${totalup wlan0}
