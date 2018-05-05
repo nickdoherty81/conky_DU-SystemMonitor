@@ -94,6 +94,8 @@ ${font Droid Sans Bold:pixelsize=14}${color white} File Systems
  ${hr 1} ${font Droid Sans Mono:pixelsize=12}
 ${color}  Root   ${fs_used /}/${fs_size /}${alignr}${color 910909}${fs_bar 10,60 /}
 ${color}  Home  ${fs_used /home}/${fs_size /home}${alignr}${color 910909}${fs_bar 10,60 /home}
+${color}  Ext  ${fs_used /media/nickdoh81/nsd}/${fs_size /media/nickdoh81/nsd}${alignr}${color 910909}${fs_bar 10,60 /media/nickdoh81/nsd}
+${color}  Win10  ${fs_used /media/nickdoh81/6F5073F64C39ECE7}/${fs_size /media/nickdoh81/6F5073F64C39ECE7}${alignr}${color 910909}${fs_bar 10,60 /media/nickdoh81/6F5073F64C39ECE7}
 
 #############
 ##Processes##
